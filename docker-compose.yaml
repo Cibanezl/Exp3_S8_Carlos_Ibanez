@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  config-server:
+    build: ./config-server
+    container_name: config-server
+    ports:
+      - "8888:8888"
+    networks:
+      - banco-net
+
+  eureka-server:
+    build: ./eureka-server
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    depends_on:
+      - config-server
+    networks:
+      - banco-net
+
+  microservicio-banco:
+    build: ./microservicio-banco
+    container_name: microservicio-banco
+    ports:
+      - "8081:8081"
+    depends_on:
+      - eureka-server
+    networks:
+      - banco-net
+
+networks:
+  banco-net:
+    driver: bridge

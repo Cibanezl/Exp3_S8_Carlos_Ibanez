@@ -1,0 +1,5 @@
+server:
+  port: 8081
+
+mensaje:
+  bienvenida: "Configuración cargada exitosamente desde Config Server centralizado"

@@ -1,0 +1,16 @@
+# Carpetas de compilación Java/Maven
+**/target/
+*.jar
+*.war
+
+# Configuración de IDEs
+.idea/
+.vscode/
+*.iml
+.settings/
+.classpath
+.project
+
+# Sistema Operativo
+.DS_Store
+Thumbs.db

@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: microservicio-banco
+  artemis:
+    mode: embedded
+    embedded:
+      enabled: true
+      persistent: false
+  config:
+    import: "optional:configserver:http://config-server:8888"
+
+server:
+  port: 8081
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      bancoService:
+        slidingWindowSize: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10000ms
